@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "messages",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"sender_id", "receiver_id"}))
+        uniqueConstraints = @UniqueConstraint(columnNames = {"sender_id", "receiver_id", "booking_status"}))
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,5 +34,8 @@ public class Message {
 
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp = LocalDateTime.now();
+
+    @Column(name = "booking_status", nullable = false)
+    private String bookingStatus = "PENDING";
 }
 
