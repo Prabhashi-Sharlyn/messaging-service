@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
     boolean existsBySenderIdAndReceiverIdAndBookingStatus(String senderId, String receiverId, String bookingStatus);
-    Optional<Message> findBySenderIdAndReceiverId(String senderId, String receiverId);
+    Optional<Message> findBySenderIdAndReceiverIdAndBookingStatus(String senderId, String receiverId, String bookingStatus);
 }

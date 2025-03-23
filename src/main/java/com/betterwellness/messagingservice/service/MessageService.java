@@ -29,7 +29,7 @@ public class MessageService {
     }
 
     public boolean updateBookingStatus(String senderId, String receiverId, String status) {
-        Optional<Message> message = messageRepository.findBySenderIdAndReceiverId(senderId, receiverId);
+        Optional<Message> message = messageRepository.findBySenderIdAndReceiverIdAndBookingStatus(senderId, receiverId, "PENDING");
         if (message.isPresent()) {
             message.get().setBookingStatus(status);
             messageRepository.save(message.get());
