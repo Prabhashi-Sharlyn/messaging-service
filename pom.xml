@@ -93,6 +93,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>messaging-service</finalName>
 	</build>
 
 </project>

@@ -11,7 +11,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(org.springframework.web.socket.config.annotation.StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
-                .setAllowedOrigins("http://localhost:3000")
+//                .setAllowedOrigins("http://localhost:3000")
+                .setAllowedOrigins("https://master.d34s1cc2qb5jb7.amplifyapp.com")
                 .addInterceptors(new WebSocketInterceptor())
                 .withSockJS();
     }

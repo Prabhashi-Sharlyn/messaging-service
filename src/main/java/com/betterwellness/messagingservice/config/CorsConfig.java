@@ -14,7 +14,8 @@ public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:3000")); // Allow frontend
+//        config.setAllowedOrigins(List.of("http://localhost:3000")); // Allow frontend
+        config.setAllowedOrigins(List.of("https://master.d34s1cc2qb5jb7.amplifyapp.com")); // Allow frontend
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("Content-Type", "Authorization"));
         config.setAllowCredentials(true); // Allow cookies/auth headers
