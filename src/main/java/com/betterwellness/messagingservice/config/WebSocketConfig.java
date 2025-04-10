@@ -12,7 +12,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(org.springframework.web.socket.config.annotation.StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
 //                .setAllowedOrigins("http://localhost:3000")
-                .setAllowedOrigins("https://master.d34s1cc2qb5jb7.amplifyapp.com")
+                .setAllowedOrigins("https://master.d2p7tq5b5p7qu3.amplifyapp.com")
                 .addInterceptors(new WebSocketInterceptor())
                 .withSockJS();
     }
