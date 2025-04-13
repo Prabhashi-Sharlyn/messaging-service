@@ -1,0 +1,59 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: messaging-ingress
+  namespace: default
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/subnets: subnet-04533401b9af89278, subnet-0bb0a8289d505fcb9
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=120
+    alb.ingress.kubernetes.io/websocket-protocol: "true"
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /ws
+            pathType: Prefix
+            backend:
+              service:
+                name: messaging-service
+                port:
+                  number: 8082
+          - path: /api/messages/getRequests
+            pathType: Prefix
+            backend:
+              service:
+                name: messaging-service
+                port:
+                  number: 8082
+          - path: /api/messages/sendRequest
+            pathType: Prefix
+            backend:
+              service:
+                name: messaging-service
+                port:
+                  number: 8082
+          - path: /api/messages/updateBookingStatus
+            pathType: Prefix
+            backend:
+              service:
+                name: messaging-service
+                port:
+                  number: 8082
+#          - path: /ws/info
+#            pathType: Exact
+#            backend:
+#              service:
+#                name: messaging-service
+#                port:
+#                  number: 8082
+#          - path: /ws/websocket
+#            pathType: Exact
+#            backend:
+#              service:
+#                name: messaging-service
+#                port:
+#                  number: 8082

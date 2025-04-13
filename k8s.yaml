@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: messaging-service
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: messaging-service
@@ -28,7 +28,6 @@ spec:
     app: messaging-service
   ports:
     - protocol: TCP
-      port: 80
+      port: 8082
       targetPort: 8082
-  type: LoadBalancer
 
