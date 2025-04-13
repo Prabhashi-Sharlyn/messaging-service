@@ -15,7 +15,7 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
 //        config.setAllowedOrigins(List.of("http://localhost:3000")); // Allow frontend
-        config.setAllowedOrigins(List.of("https://master.d2p7tq5b5p7qu3.amplifyapp.com")); // Allow frontend
+        config.setAllowedOrigins(List.of("https://master.d1rtspf28af2h2.amplifyapp.com","https://itsbetterwellness.com")); // Allow frontend
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("Content-Type", "Authorization"));
         config.setAllowCredentials(true); // Allow cookies/auth headers

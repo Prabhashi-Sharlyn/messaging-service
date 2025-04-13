@@ -5,44 +5,55 @@ metadata:
   namespace: default
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/subnets: subnet-04533401b9af89278, subnet-0bb0a8289d505fcb9
+    alb.ingress.kubernetes.io/subnets: subnet-042bb60cdf97c61f0, subnet-097536f95c0b4f02c
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/backend-protocol: HTTP
     alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=120
     alb.ingress.kubernetes.io/websocket-protocol: "true"
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:147997140755:certificate/505898e5-5195-4dda-a3f7-9b2cc59b019e
+    alb.ingress.kubernetes.io/healthcheck-path: /api/messages/getRequests
 spec:
   ingressClassName: alb
   rules:
-    - http:
+    - host: itsbetterwellness.com
+      http:
         paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: messaging-service
+                port:
+                  number: 80
           - path: /ws
             pathType: Prefix
             backend:
               service:
                 name: messaging-service
                 port:
-                  number: 8082
+                  number: 80
           - path: /api/messages/getRequests
             pathType: Prefix
             backend:
               service:
                 name: messaging-service
                 port:
-                  number: 8082
+                  number: 80
           - path: /api/messages/sendRequest
             pathType: Prefix
             backend:
               service:
                 name: messaging-service
                 port:
-                  number: 8082
+                  number: 80
           - path: /api/messages/updateBookingStatus
             pathType: Prefix
             backend:
               service:
                 name: messaging-service
                 port:
-                  number: 8082
+                  number: 80
 #          - path: /ws/info
 #            pathType: Exact
 #            backend:
