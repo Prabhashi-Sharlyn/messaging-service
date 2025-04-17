@@ -41,7 +41,7 @@ phases:
       - aws eks update-kubeconfig --region $REGION --name $CLUSTER_NAME
       - echo Getting cluster subnets...
       - SUBNETS=$(aws eks describe-cluster --name $CLUSTER_NAME --region $REGION --query "cluster.resourcesVpcConfig.subnetIds" --output text | tr '\t' ',')
-      - echo "Found subnets: $SUBNETS"
+      - echo "Found subnets.. $SUBNETS"
       - echo Updating ALB ingress configuration...
       - sed -i "s|alb.ingress.kubernetes.io/subnets:.*|alb.ingress.kubernetes.io/subnets:$SUBNETS|" alb-ingress.yaml
       - echo "Updated subnets in alb-ingress.yaml:"
