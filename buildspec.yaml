@@ -21,7 +21,7 @@ phases:
       - echo Updating CORS config...
       - sed -i "s|setAllowedOrigins(.*)|setAllowedOrigins(List.of(\"$FRONTEND_URL\"))|g" src/main/java/com/betterwellness/messagingservice/config/CorsConfig.java
       - grep "setAllowedOrigins" src/main/java/com/betterwellness/messagingservice/config/CorsConfig.java
-      - sed -i "s|setAllowedOrigins(.*)|setAllowedOrigins(\"$FRONTEND_URL\","https://itsbetterwellness.com")|g" src/main/java/com/betterwellness/messagingservice/config/WebSocketConfig.java
+      - sed -i "s|setAllowedOrigins(.*)|setAllowedOrigins(\"$FRONTEND_URL\", \\\"https://itsbetterwellness.com\\\")|g" src/main/java/com/betterwellness/messagingservice/config/WebSocketConfig.java
       - grep "setAllowedOrigins" src/main/java/com/betterwellness/messagingservice/config/WebSocketConfig.java
 
   build:
