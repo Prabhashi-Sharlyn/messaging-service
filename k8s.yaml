@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: messaging-service
-          image: 147997140755.dkr.ecr.ap-south-1.amazonaws.com/messaging-service:latest
+          image: <IMAGE_URI>
           ports:
             - containerPort: 8082
 ---
