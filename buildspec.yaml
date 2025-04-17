@@ -39,13 +39,6 @@ phases:
       - docker push $REPOSITORY_URI:$TAG
       - echo Updating kubeconfig...
       - aws eks update-kubeconfig --region $REGION --name $CLUSTER_NAME
-      - echo Getting cluster subnets...
-      - SUBNETS=$(aws eks describe-cluster --name $CLUSTER_NAME --region $REGION --query "cluster.resourcesVpcConfig.subnetIds" --output text | tr '\t' ',')
-      - echo "Found subnets.. $SUBNETS"
-      - echo Updating ALB ingress configuration...
-      - sed -i "s|alb.ingress.kubernetes.io/subnets:.*|alb.ingress.kubernetes.io/subnets:$SUBNETS|" alb-ingress.yaml
-      - echo "Updated subnets in alb-ingress.yaml:"
-      - grep "subnets" alb-ingress.yaml
       - echo Replacing image URI in k8s.yaml...
       - sed -i "s|<IMAGE_URI>|$REPOSITORY_URI:$TAG|g" k8s.yaml
       - echo "Final k8s.yaml contents:"
@@ -54,8 +47,6 @@ phases:
       - aws eks --region $REGION update-kubeconfig --name $CLUSTER_NAME
       - echo Applying Kubernetes manifests...
       - kubectl apply -f k8s.yaml
-      - echo Applying ALB ingress configuration...
-      - kubectl apply -f alb-ingress.yaml
 
 artifacts:
   files: '**/*'
