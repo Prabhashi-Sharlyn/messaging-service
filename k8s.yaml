@@ -17,6 +17,13 @@ spec:
           image: <IMAGE_URI>
           ports:
             - containerPort: 8082
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
 ---
 
 apiVersion: v1

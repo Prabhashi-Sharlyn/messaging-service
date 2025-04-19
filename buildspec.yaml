@@ -47,6 +47,8 @@ phases:
       - aws eks --region $REGION update-kubeconfig --name $CLUSTER_NAME
       - echo Applying Kubernetes manifests...
       - kubectl apply -f k8s.yaml
+      - echo Applying Autoscaling manifests...
+      - kubectl apply -f autoscaler.yaml
 
 artifacts:
   files: '**/*'
